@@ -1,14 +1,24 @@
 import React from "react";
-import { Text, StyleSheet, View, Image } from "react-native";
+import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
+import { Feather } from "@expo/vector-icons";
+import { withNavigation } from "react-navigation";
 
-const SongCard = ({ song }) => {
+const SongCard = ({ song, navigation }) => {
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.image}
-        source={song.data.albumOfTrack.coverArt.sources}
-      ></Image>
-      <Text style={styles.name}>{song.data.name}</Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Song", { data: song.data })}
+      >
+        <Image
+          style={styles.image}
+          source={song.data.albumOfTrack.coverArt.sources}
+        ></Image>
+      </TouchableOpacity>
+
+      <View style={styles.titleAndIcon}>
+        <Text style={styles.name}>{song.data.name}</Text>
+        <Feather name="heart" style={styles.featherIcon}></Feather>
+      </View>
     </View>
   );
 };
@@ -26,6 +36,14 @@ const styles = StyleSheet.create({
   name: {
     fontWeight: "bold",
   },
+  featherIcon: {
+    fontSize: 25,
+  },
+  titleAndIcon: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
 });
 
-export default SongCard;
+export default withNavigation(SongCard);

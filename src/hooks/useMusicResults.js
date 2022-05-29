@@ -12,7 +12,7 @@ export default () => {
         params: {
           q: searchInputTerm,
           type: "multi",
-          limit: 1,
+          limit: 5,
         },
       });
       setSearchResults(response.data);

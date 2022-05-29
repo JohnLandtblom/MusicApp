@@ -1,26 +1,32 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import AlbumCard from "./AlbumCard";
 import ArtistCard from "./ArtistCard";
 import SongCard from "./SongCard";
+import { withNavigation } from "react-navigation";
 
 const SearchResultList = ({ category, displayList }) => {
   return (
-    <View style={styles.container}>
+    <View>
       <Text style={styles.category}>{category}</Text>
-
-      {displayList?.map((item, i) => {
-        switch (category) {
-          case "Artists":
-            return <ArtistCard artist={item} key={i} />;
-          case "Songs":
-            return <SongCard horizontal={true} song={item} key={i} />;
-          case "Albums":
-            return <AlbumCard album={item} key={i} />;
-          default:
-            return null;
-        }
-      })}
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        style={styles.container}
+      >
+        {displayList?.map((item) => {
+          switch (category) {
+            case "Artists":
+              return <ArtistCard artist={item} />;
+            case "Songs":
+              return <SongCard horizontal={true} song={item} />;
+            case "Albums":
+              return <AlbumCard album={item} />;
+            default:
+              return null;
+          }
+        })}
+      </ScrollView>
     </View>
   );
 };
@@ -40,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SearchResultList;
+export default withNavigation(SearchResultList);
