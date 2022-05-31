@@ -16,6 +16,7 @@ const ArtistDetail = (data) => {
       {artist ? (
         <View style={styles.container}>
           <Text style={styles.title}> {artist.profile.name}</Text>
+
           <Image
             style={styles.image}
             source={artist.visuals.avatarImage.sources}

@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
 import SearchBar from "../components/SearchBar";
 import SearchResultList from "../components/SearchResultList";
 import useMusicResults from "../hooks/useMusicResults";
 
-const SearchMusicScreen = () => {
+const SearchMusicScreen = ({ navigation, propData, savedData }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [apiSearch, searchResults, errorMessage] = useMusicResults("");
+  const callSavedData = (savedData) => {
+    console.log(savedData, "searchmusicscreen");
+    return savedData;
+  };
 
   return (
     <View>
@@ -25,12 +29,22 @@ const SearchMusicScreen = () => {
         <SearchResultList
           displayList={searchResults.artists?.items}
           category="Artists"
+          propData={callSavedData}
         ></SearchResultList>
         <SearchResultList
           category="Albums"
           displayList={searchResults.albums?.items}
         ></SearchResultList>
       </ScrollView>
+      <Button
+        title="Saved items"
+        onPress={() =>
+          navigation.navigate("Likes", {
+            id: Math.random().toString(),
+            data: savedData,
+          })
+        }
+      ></Button>
     </View>
   );
 };
