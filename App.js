@@ -1,5 +1,6 @@
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+import GlobalState from "./src/context/GlobalState";
 import AlbumDetail from "./src/components/AlbumDetail";
 import ArtistDetail from "./src/components/ArtistDetail";
 import SongDetail from "./src/components/SongDetail";
@@ -22,4 +23,4 @@ const navigator = createStackNavigator(
   }
 );
 
-export default createAppContainer(navigator);
+export default createAppContainer(<GlobalState>{navigator}</GlobalState>);

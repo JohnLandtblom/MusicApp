@@ -4,13 +4,9 @@ import SearchBar from "../components/SearchBar";
 import SearchResultList from "../components/SearchResultList";
 import useMusicResults from "../hooks/useMusicResults";
 
-const SearchMusicScreen = ({ navigation, propData, savedData }) => {
+const SearchMusicScreen = ({ navigation, savedData }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [apiSearch, searchResults, errorMessage] = useMusicResults("");
-  const callSavedData = (savedData) => {
-    console.log(savedData, "searchmusicscreen");
-    return savedData;
-  };
 
   return (
     <View>
@@ -29,7 +25,6 @@ const SearchMusicScreen = ({ navigation, propData, savedData }) => {
         <SearchResultList
           displayList={searchResults.artists?.items}
           category="Artists"
-          propData={callSavedData}
         ></SearchResultList>
         <SearchResultList
           category="Albums"

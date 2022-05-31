@@ -6,9 +6,6 @@ import SongCard from "./SongCard";
 import { withNavigation } from "react-navigation";
 
 const SearchResultList = ({ category, displayList, propData }) => {
-  const callSavedData = (savedData) => {
-    propData(savedData);
-  };
   return (
     <View>
       <Text style={styles.category}>{category}</Text>
@@ -22,7 +19,7 @@ const SearchResultList = ({ category, displayList, propData }) => {
             case "Artists":
               return (
                 <ArtistCard
-                  propData={callSavedData}
+                  propData={propData(artist)}
                   key={Math.random().toString()}
                   artist={item}
                 />

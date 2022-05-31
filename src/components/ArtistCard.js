@@ -2,15 +2,9 @@ import React, { useState } from "react";
 import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { withNavigation } from "react-navigation";
-
-const ArtistCard = ({ artist, navigation, propData }) => {
-  const [savedData, setSavedData] = useState([]);
-  // console.log(savedData);
-
-  const saveOnClick = () => {
-    setSavedData((arr) => [artist.data.profile.name, ...arr]);
-    propData(savedData);
-  };
+import Context from "../context/context";
+const ArtistCard = ({ artist, navigation }) => {
+  const appContext = Context;
 
   return (
     <View style={styles.container}>
@@ -22,10 +16,6 @@ const ArtistCard = ({ artist, navigation, propData }) => {
           })
         }
       >
-        {savedData.map((e) => (
-          <Text style={styles.name}>{e}</Text>
-        ))}
-
         <Image
           style={styles.image}
           source={artist.data.visuals.avatarImage.sources}
@@ -34,7 +24,7 @@ const ArtistCard = ({ artist, navigation, propData }) => {
 
       <View style={styles.titleAndIcon}>
         <Text style={styles.name}>{artist.data.profile.name}</Text>
-        <TouchableOpacity onPress={saveOnClick}>
+        <TouchableOpacity onPress={appContext.AddArtist(artist)}>
           <Feather name="heart" style={styles.featherIcon}></Feather>
         </TouchableOpacity>
       </View>
