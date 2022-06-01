@@ -1,11 +1,12 @@
+import React from "react";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import GlobalState from "./src/context/GlobalState";
 import AlbumDetail from "./src/components/AlbumDetail";
 import ArtistDetail from "./src/components/ArtistDetail";
 import SongDetail from "./src/components/SongDetail";
 import LikedSongsScreen from "./src/screens/LikedSongsScreen";
 import SearchMusicScreen from "./src/screens/SearchMusicScreen";
+import GlobalState from "./src/context/GlobalState";
 
 const navigator = createStackNavigator(
   {
@@ -23,4 +24,11 @@ const navigator = createStackNavigator(
   }
 );
 
-export default createAppContainer(<GlobalState>{navigator}</GlobalState>);
+const App = createAppContainer(navigator);
+export default () => {
+  return (
+    <GlobalState>
+      <App></App>
+    </GlobalState>
+  );
+};

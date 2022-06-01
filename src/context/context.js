@@ -3,7 +3,7 @@ import React from "react";
 export default React.createContext({
   artists: [],
   songs: [],
-  album: [],
+  albums: [],
   addArtist: (artist) => {},
   addSong: (song) => {},
   addAlbum: (album) => {},

@@ -4,20 +4,26 @@ export default class GlobalState extends React.Component {
   state = {
     artists: [],
     songs: [],
-    album: [],
+    albums: [],
   };
 
   addArtist = (artist) => {
-    //TODO: Add artist to state object
+    const artistList = [...this.state.artists, artist];
+    this.setState({ artists: artistList });
     console.log("add Artist:" + artist);
+    // console.log(artistList);
   };
 
   addSong = (song) => {
-    //TODO: Add song to state object
+    const songList = [...this.state.songs, song];
+    this.setState({ songs: songList });
+    console.log("add song" + song);
   };
 
   addAlbum = (album) => {
-    //TODO: Add album to state object
+    const albumList = [...this.state.albums, album];
+    this.setState({ albums: albumList });
+    console.log("add album" + album);
   };
 
   render() {
@@ -26,7 +32,7 @@ export default class GlobalState extends React.Component {
         value={{
           artists: this.state.artists,
           songs: this.state.songs,
-          album: this.state.album,
+          albums: this.state.albums,
           addArtist: this.addArtist,
           addSong: this.addSong,
           addAlbum: this.addAlbum,

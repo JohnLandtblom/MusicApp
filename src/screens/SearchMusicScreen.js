@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
 import SearchBar from "../components/SearchBar";
 import SearchResultList from "../components/SearchResultList";
 import useMusicResults from "../hooks/useMusicResults";
+import { Feather } from "@expo/vector-icons";
 
 const SearchMusicScreen = ({ navigation, savedData }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -10,11 +11,24 @@ const SearchMusicScreen = ({ navigation, savedData }) => {
 
   return (
     <View>
-      <SearchBar
-        onTermSubmit={() => apiSearch(searchTerm)}
-        searchTerm={searchTerm}
-        onTermChange={setSearchTerm}
-      ></SearchBar>
+      <View style={styles.iconContainer}>
+        <SearchBar
+          onTermSubmit={() => apiSearch(searchTerm)}
+          searchTerm={searchTerm}
+          onTermChange={setSearchTerm}
+        ></SearchBar>
+
+        <Feather
+          style={styles.featherIcon}
+          name="heart"
+          onPress={() =>
+            navigation.navigate("Likes", {
+              id: Math.random().toString(),
+              data: savedData,
+            })
+          }
+        ></Feather>
+      </View>
       {errorMessage ? <Text>{errorMessage}</Text> : null}
 
       <ScrollView>
@@ -31,19 +45,21 @@ const SearchMusicScreen = ({ navigation, savedData }) => {
           displayList={searchResults.albums?.items}
         ></SearchResultList>
       </ScrollView>
-      <Button
-        title="Saved items"
-        onPress={() =>
-          navigation.navigate("Likes", {
-            id: Math.random().toString(),
-            data: savedData,
-          })
-        }
-      ></Button>
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  iconContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "baseline",
+    justifyContent: "space-around",
+  },
+  featherIcon: {
+    fontSize: 35,
+    color: "red",
+  },
+});
 
 export default SearchMusicScreen;

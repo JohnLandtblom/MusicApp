@@ -1,29 +1,22 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useContext } from "react";
+import { View, Text, StyleSheet, FlatList } from "react-native";
+import Context from "../context/context";
 
-const LikedSongsScreen = (data) => {
-  console.log(data);
-  const [artist, setArtist] = React.useState();
-  React.useEffect(() => {
-    if (data.navigation.state.params.data) {
-      setArtist(data.navigation.state.params.data);
-    } else {
-      setArtist();
-    }
-  }, [data]);
+const LikedSongsScreen = () => {
+  const { artists, artist } = useContext(Context);
+  console.log(artist);
+
   return (
-    <View>
-      {artist ? (
-        <View style={styles.container}>
-          <Text style={styles.title}> {artist}</Text>
-        </View>
-      ) : (
-        <Text>No song set</Text>
-      )}
+    <View style={styles.container}>
+      <Text>Liked Artists</Text>
+      <FlatList
+        data={artists}
+        keyExtractor={(artist) => artist}
+        renderItem={({ item }) => {
+          return <Text>{item}</Text>;
+        }}
+      ></FlatList>
     </View>
-    // <View style={styles.name}>
-    //   <Text>Liked songs lists</Text>
-    // </View>
   );
 };
 

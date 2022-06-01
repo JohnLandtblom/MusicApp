@@ -5,7 +5,7 @@ import ArtistCard from "./ArtistCard";
 import SongCard from "./SongCard";
 import { withNavigation } from "react-navigation";
 
-const SearchResultList = ({ category, displayList, propData }) => {
+const SearchResultList = ({ category, displayList }) => {
   return (
     <View>
       <Text style={styles.category}>{category}</Text>
@@ -18,11 +18,7 @@ const SearchResultList = ({ category, displayList, propData }) => {
           switch (category) {
             case "Artists":
               return (
-                <ArtistCard
-                  propData={propData(artist)}
-                  key={Math.random().toString()}
-                  artist={item}
-                />
+                <ArtistCard key={Math.random().toString()} artist={item} />
               );
             case "Songs":
               return <SongCard key={Math.random().toString()} song={item} />;

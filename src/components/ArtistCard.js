@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { withNavigation } from "react-navigation";
 import Context from "../context/context";
 const ArtistCard = ({ artist, navigation }) => {
-  const appContext = Context;
+  const { addArtist } = useContext(Context);
 
   return (
     <View style={styles.container}>
@@ -24,7 +24,7 @@ const ArtistCard = ({ artist, navigation }) => {
 
       <View style={styles.titleAndIcon}>
         <Text style={styles.name}>{artist.data.profile.name}</Text>
-        <TouchableOpacity onPress={appContext.AddArtist(artist)}>
+        <TouchableOpacity onPress={() => addArtist(artist.data.profile.name)}>
           <Feather name="heart" style={styles.featherIcon}></Feather>
         </TouchableOpacity>
       </View>
