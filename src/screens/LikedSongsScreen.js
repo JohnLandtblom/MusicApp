@@ -1,21 +1,17 @@
-import React, { useContext } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
-import Context from "../context/context";
+import React from "react";
+import { View, StyleSheet, ScrollView } from "react-native";
+import LikedSongs from "../components/LikedSongs";
+import LikedArtists from "../components/LikedArtists";
+import LikedAlbums from "../components/LikedAlbums";
 
 const LikedSongsScreen = () => {
-  const { artists, artist } = useContext(Context);
-  console.log(artist);
-
   return (
     <View style={styles.container}>
-      <Text>Liked Artists</Text>
-      <FlatList
-        data={artists}
-        keyExtractor={(artist) => artist}
-        renderItem={({ item }) => {
-          return <Text>{item}</Text>;
-        }}
-      ></FlatList>
+      <ScrollView>
+        <LikedSongs></LikedSongs>
+        <LikedArtists></LikedArtists>
+        <LikedAlbums></LikedAlbums>
+      </ScrollView>
     </View>
   );
 };

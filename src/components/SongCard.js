@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { withNavigation } from "react-navigation";
+import Context from "../context/context";
 
 const SongCard = ({ song, navigation }) => {
+  const { addSong } = useContext(Context);
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -17,7 +19,9 @@ const SongCard = ({ song, navigation }) => {
 
       <View style={styles.titleAndIcon}>
         <Text style={styles.name}>{song.data.name}</Text>
-        <Feather name="heart" style={styles.featherIcon}></Feather>
+        <TouchableOpacity onPress={() => addSong(song)}>
+          <Feather name="heart" style={styles.featherIcon}></Feather>
+        </TouchableOpacity>
       </View>
     </View>
   );

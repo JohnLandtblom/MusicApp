@@ -24,7 +24,7 @@ const ArtistCard = ({ artist, navigation }) => {
 
       <View style={styles.titleAndIcon}>
         <Text style={styles.name}>{artist.data.profile.name}</Text>
-        <TouchableOpacity onPress={() => addArtist(artist.data.profile.name)}>
+        <TouchableOpacity onPress={() => addArtist(artist)}>
           <Feather name="heart" style={styles.featherIcon}></Feather>
         </TouchableOpacity>
       </View>

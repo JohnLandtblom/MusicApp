@@ -11,24 +11,12 @@ const SearchMusicScreen = ({ navigation, savedData }) => {
 
   return (
     <View>
-      <View style={styles.iconContainer}>
-        <SearchBar
-          onTermSubmit={() => apiSearch(searchTerm)}
-          searchTerm={searchTerm}
-          onTermChange={setSearchTerm}
-        ></SearchBar>
+      <SearchBar
+        onTermSubmit={() => apiSearch(searchTerm)}
+        searchTerm={searchTerm}
+        onTermChange={setSearchTerm}
+      ></SearchBar>
 
-        <Feather
-          style={styles.featherIcon}
-          name="heart"
-          onPress={() =>
-            navigation.navigate("Likes", {
-              id: Math.random().toString(),
-              data: savedData,
-            })
-          }
-        ></Feather>
-      </View>
       {errorMessage ? <Text>{errorMessage}</Text> : null}
 
       <ScrollView>
@@ -45,6 +33,16 @@ const SearchMusicScreen = ({ navigation, savedData }) => {
           displayList={searchResults.albums?.items}
         ></SearchResultList>
       </ScrollView>
+      <Feather
+        style={styles.featherIcon}
+        name="heart"
+        onPress={() =>
+          navigation.navigate("Likes", {
+            id: Math.random().toString(),
+            data: savedData,
+          })
+        }
+      ></Feather>
     </View>
   );
 };
@@ -59,6 +57,7 @@ const styles = StyleSheet.create({
   featherIcon: {
     fontSize: 35,
     color: "red",
+    marginLeft: 170,
   },
 });
 

@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     flexDirection: "row",
     marginTop: 16,
-    width: 250,
   },
   inputFieldStyle: {
     fontSize: 18,
