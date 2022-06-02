@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { View, StyleSheet, ScrollView, Button } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
+
 import { LogBox } from "react-native";
 import LikedSongs from "../components/LikedSongs";
 import LikedArtists from "../components/LikedArtists";
@@ -9,6 +10,7 @@ const LikedSongsScreen = () => {
   useEffect(() => {
     LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
   }, []);
+
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>

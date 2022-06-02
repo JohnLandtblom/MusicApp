@@ -21,7 +21,7 @@ export default () => {
   };
 
   useEffect(() => {
-    //apiSearch("abba");
+    apiSearch("elton john");
   }, []);
 
   return [apiSearch, searchResults, errorMessage];

@@ -19,7 +19,7 @@ const SongCard = ({ song, navigation }) => {
       </TouchableOpacity>
 
       <View style={styles.titleAndIcon}>
-        <Text style={styles.name}>{song.data.name}</Text>
+        <Text style={styles.name}>{song.data.name} </Text>
         <TouchableOpacity onPress={() => addSong(song)}>
           <Feather name="heart" style={styles.featherIcon}></Feather>
         </TouchableOpacity>
