@@ -56,8 +56,12 @@ const styles = StyleSheet.create({
   },
   featherIcon: {
     fontSize: 35,
-    color: "red",
+    color: "black",
     marginLeft: 170,
+    marginRight: 163,
+    borderWidth: 3,
+    borderColor: "red",
+    borderRadius: 5,
   },
 });
 

@@ -12,23 +12,22 @@ import { MaterialIcons } from "@expo/vector-icons";
 import Context from "../context/context";
 
 const LikedSongs = () => {
-  const { songs, deleteSong, idProvider } = useContext(Context);
+  const { songs, deleteSong } = useContext(Context);
 
-  console.log(idProvider());
   return (
     <View>
       <Text style={styles.headLine}>Liked Songs</Text>
       <FlatList
         data={songs}
-        keyExtractor={(item) => idProvider(item)}
-        renderItem={({ item }) => {
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item, index }) => {
           return (
             <View style={styles.listContainer}>
               <MaterialIcons
                 style={styles.icon}
                 size={30}
                 name="delete-outline"
-                onPress={(item) => deleteSong(item)}
+                onPress={() => deleteSong(index)}
               />
               <Image
                 style={styles.image}
