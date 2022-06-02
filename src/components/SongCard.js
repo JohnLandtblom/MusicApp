@@ -6,6 +6,7 @@ import Context from "../context/context";
 
 const SongCard = ({ song, navigation }) => {
   const { addSong } = useContext(Context);
+
   return (
     <View style={styles.container}>
       <TouchableOpacity

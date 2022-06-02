@@ -1,5 +1,6 @@
 import React from "react";
 import Context from "./context";
+
 export default class GlobalState extends React.Component {
   state = {
     artists: [],

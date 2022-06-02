@@ -19,7 +19,7 @@ const navigator = createStackNavigator(
   {
     initialRouteName: "Search",
     defaultNavigationOptions: {
-      title: "Find Your Song",
+      title: "Shazom",
     },
   }
 );

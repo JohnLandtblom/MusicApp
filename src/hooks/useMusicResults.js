@@ -7,7 +7,6 @@ export default () => {
 
   const apiSearch = async (searchInputTerm) => {
     try {
-      console.log("apiSearch");
       const response = await apiService.get("/search/", {
         params: {
           q: searchInputTerm,
